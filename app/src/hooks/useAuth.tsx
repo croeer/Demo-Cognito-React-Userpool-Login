@@ -54,6 +54,17 @@ const useProvideAuth = (): UseAuth => {
     const signIn = async (username: string, password: string) => {
         try {
             const result = await Auth.signIn(username, password);
+            // if (result.challengeName === 'NEW_PASSWORD_REQUIRED') {
+            //     Auth.completeNewPassword(
+            //       result,            
+            //       password,   // pass the same password
+            //     ).then(user => {
+            //         // at this time the user is logged in if no MFA required
+            //         console.log(user);
+            //     }).catch(e => {
+            //       console.log(e);
+            //     });
+            // }
             setUsername(result.username);
             setIsAuthenticated(true);
             return { success: true, message: "" };
